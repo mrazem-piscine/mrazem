@@ -1,4 +1,4 @@
-package main
+package moaz
 
 func getArt(char byte) []string {
 	font := make(map[byte][]string, 100)

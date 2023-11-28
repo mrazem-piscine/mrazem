@@ -1,9 +1,6 @@
-package main
+package moaz
 
 import (
-	"bufio"
-	"fmt"
-	"os"
 	"sort"
 	"strings"
 )
@@ -61,20 +58,4 @@ func fuse(left, right []string) []string {
 		left[j] = left[j][:len(left[j])-c] + cc + right[j][c:]
 	}
 	return left
-}
-
-func main() {
-	fmt.Println("Enter the string:")
-	reader := bufio.NewReader(os.Stdin)
-	text, err := reader.ReadString('\n')
-	if err != nil {
-		fmt.Println("Error reading input:", err)
-		return
-	}
-
-	text = strings.ReplaceAll(text, "\\n", "\n")
-
-	asciiArt := String(text)
-
-	fmt.Println(asciiArt)
 }
