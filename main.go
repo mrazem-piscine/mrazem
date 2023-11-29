@@ -9,27 +9,13 @@ func String(text string) string {
 	if len(text) == 0 {
 		return ""
 	}
-
-	lines := strings.Split(text, "\n")
-	result := make([]string, 0)
-
-	for _, line := range lines {
-		if len(line) == 0 {
-			result = append(result, "")
-			continue
-		}
-
-		chars := []byte(line)
-		s := getArt(chars[0])
-
-		for i := 1; i < len(chars); i++ {
-			s = fuse(s, getArt(chars[i]))
-		}
-
-		result = append(result, s...)
+	chars := []byte(text)
+	s := getArt(chars[0])
+	for i := 1; i < len(chars); i++ {
+		s = fuse(s, getArt(chars[i]))
 	}
 
-	return strings.Replace(strings.Join(result, "\n"), "$", " ", -1)
+	return strings.Replace(strings.Join(s, "\n"), "$", " ", -1)
 }
 
 func fuse(left, right []string) []string {
